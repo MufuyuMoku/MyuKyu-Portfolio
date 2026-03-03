@@ -1,0 +1,62 @@
+{{ define "main" }}
+<style>
+    /* Agar halaman detail lagu bisa di-scroll ke bawah kalau liriknya panjang */
+    body.section-music { overflow: auto !important; }
+    
+    .music-hologram {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 800px;
+        margin: 15vh auto 5rem auto; /* Posisi di tengah layar agak ke atas */
+        background: rgba(10, 10, 15, 0.6);
+        backdrop-filter: blur(12px); /* Efek Kaca / Glassmorphism */
+        border: 1px solid rgba(57, 197, 187, 0.3);
+        border-radius: 12px;
+        padding: 4rem;
+        box-shadow: 0 0 40px rgba(57, 197, 187, 0.1);
+        color: #e2e8f0;
+    }
+    .btn-back {
+        display: inline-block;
+        color: #39c5bb;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 2px;
+        font-size: 0.8rem;
+        margin-bottom: 2rem;
+        transition: color 0.2s;
+    }
+    .btn-back:hover { color: #ff8b94; }
+    
+    .track-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+    .track-meta {
+        color: #ff8b94;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1.5rem;
+    }
+    .hologram-content p { line-height: 1.8; margin-bottom: 1.5rem; }
+</style>
+
+<div class="ring ring-3" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2; pointer-events: none; z-index: 1;"></div>
+
+<div class="music-hologram">
+    <a href="/music/" class="btn-back">← Return to Orbit</a>
+    <h1 class="track-title">{{ .Title }}</h1>
+    <div class="track-meta">Signal Logged: {{ .Date.Format "Jan 02, 2006" }}</div>
+    
+    <div class="hologram-content markdown-content">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}

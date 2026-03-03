@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="terminal-window" style="top: 80px; left: 15vw; width: 70vw; min-height: 75vh; z-index: 10;">
+    <div class="terminal-header">
+        <a href="/projects/" class="term-btn btn-close" style="display:inline-block;" title="Close (cd ..)"></a>
+        <span class="term-btn btn-min"></span>
+        <span class="term-btn btn-max"></span>
+        <span class="term-title">nvim {{ .File.LogicalName }}</span>
+    </div>
+    
+    <div class="terminal-body" style="overflow-y: auto;">
+        <div class="prompt-line">
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> cat {{ .File.LogicalName }}
+        </div>
+        
+        <div class="markdown-content">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+        </div>
+
+        <div class="prompt-line" style="margin-top: 3rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+            <p style="color: #a497b5; font-size: 0.8rem; margin-bottom: 1rem;">// Ketik 'cd ..' pada keyboardmu dan tekan Enter untuk kembali.</p>
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> 
+            <span id="typed-text"></span><span class="cursor"></span>
+        </div>
+    </div>
+</div>
+{{ end }}

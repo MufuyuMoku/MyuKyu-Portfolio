@@ -1,0 +1,151 @@
+{{ define "main" }}
+<div class="hyperspace-nav">
+    <button class="warp-btn" id="btn-prev-system">◄ Warp</button>
+    <span id="current-system-name">SCANNING...</span>
+    <button class="warp-btn" id="btn-next-system">Warp ►</button>
+</div>
+
+<div id="galaxy-container">
+    {{ $albums := .Pages.GroupByParam "album" }}
+    
+    {{ range $index, $album := $albums }}
+    <div class="system-group {{ if eq $index 0 }}active{{ else }}hyperspace-out{{ end }}" data-system-name="{{ $album.Key }}">
+        
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+
+        <div class="center-core">
+            <h2>Soundscape</h2>
+            <p>{{ $album.Key }}</p>
+        </div>
+
+        {{ range $pageIndex, $page := $album.Pages }}
+            {{ if not (.Params.is_moon | default false) }}
+                {{ $planetId := .Params.track_id | default .File.TranslationBaseName }}
+                
+                <a href="{{ .Permalink }}" class="planet-node" data-id="{{ $planetId }}" title="{{ .Title }}">
+                    <div class="star-core"></div>
+                    <span class="star-title">{{ .Title }}</span>
+                </a>
+
+                {{ range $moonIndex, $moon := $album.Pages }}
+                    {{ if and (.Params.is_moon | default false) (eq .Params.parent_track $planetId) }}
+                        <a href="{{ .Permalink }}" class="moon-node" data-parent="{{ $planetId }}" title="{{ .Title }}">
+                            <div class="moon-core"></div>
+                            <span class="moon-title">{{ .Title }}</span>
+                        </a>
+                    {{ end }}
+                {{ end }}
+                
+            {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const systems = Array.from(document.querySelectorAll('.system-group'));
+    if (systems.length === 0) return;
+
+    // --- UI Hyperspace ---
+    let activeIndex = 0;
+    const sysNameDisplay = document.getElementById('current-system-name');
+
+    function updateSystemDisplay() {
+        sysNameDisplay.textContent = systems[activeIndex].getAttribute('data-system-name');
+        systems.forEach((sys, i) => {
+            sys.classList.remove('active', 'hyperspace-in', 'hyperspace-out');
+            if (i === activeIndex) sys.classList.add('active');
+            else if (i > activeIndex) sys.classList.add('hyperspace-out'); 
+            else sys.classList.add('hyperspace-in');  
+        });
+    }
+    
+    document.getElementById('btn-prev-system').addEventListener('click', () => {
+        activeIndex = (activeIndex - 1 + systems.length) % systems.length; updateSystemDisplay();
+    });
+    document.getElementById('btn-next-system').addEventListener('click', () => {
+        activeIndex = (activeIndex + 1) % systems.length; updateSystemDisplay();
+    });
+    updateSystemDisplay();
+
+    // --- ENGINE ORBIT INDIVIDUAL ---
+    const rings = [
+        { r: "15vw", s: 0.15 },   
+        { r: "25vw", s: -0.08 },  
+        { r: "37.5vw", s: 0.05 }  
+    ];
+
+    const universeData = [];
+
+    systems.forEach(sys => {
+        const planets = Array.from(sys.querySelectorAll('.planet-node'));
+        const moons = Array.from(sys.querySelectorAll('.moon-node'));
+        const sysData = { planets: [], moons: [] };
+
+        planets.forEach((p, i) => {
+            const ringInfo = rings[i % 3];
+            const startAngle = (i / planets.length) * 360;
+            
+            p.style.setProperty('--radius', ringInfo.r);
+            
+            const pData = { el: p, id: p.getAttribute('data-id'), angle: startAngle, speed: ringInfo.s, isHovered: false };
+            sysData.planets.push(pData);
+
+            // Rem khusus untuk planet ini saja
+            p.addEventListener('mouseenter', () => pData.isHovered = true);
+            p.addEventListener('mouseleave', () => pData.isHovered = false);
+        });
+
+        moons.forEach((m) => {
+            const moonRadius = (40 + Math.random() * 20) + "px";
+            m.style.setProperty('--moon-radius', moonRadius);
+            
+            const mData = { el: m, parent_id: m.getAttribute('data-parent'), angle: Math.random() * 360, speed: 0.5 + Math.random() * 1.5, isHovered: false };
+            sysData.moons.push(mData);
+
+            // Rem khusus untuk bulan ini saja
+            m.addEventListener('mouseenter', () => mData.isHovered = true);
+            m.addEventListener('mouseleave', () => mData.isHovered = false);
+        });
+
+        universeData.push(sysData);
+    });
+
+    // --- ANIMATION LOOP ---
+    function animateUniverse() {
+        const activeSysData = universeData[activeIndex];
+
+        if (activeSysData) {
+            // Proses Planet
+            activeSysData.planets.forEach(p => {
+                if (!p.isHovered) {
+                    p.angle = (p.angle + p.speed) % 360;
+                }
+                p.el.style.setProperty('--angle', `${p.angle}deg`);
+            });
+
+            // Proses Bulan
+            activeSysData.moons.forEach(m => {
+                const parent = activeSysData.planets.find(p => p.id === m.parent_id);
+                if (parent) {
+                    // Bulan harus selalu tahu posisi sudut induknya!
+                    m.el.style.setProperty('--angle', `${parent.angle}deg`);
+                    m.el.style.setProperty('--radius', parent.el.style.getPropertyValue('--radius'));
+                }
+
+                if (!m.isHovered) {
+                    m.angle = (m.angle + m.speed) % 360;
+                }
+                m.el.style.setProperty('--moon-angle', `${m.angle}deg`);
+            });
+        }
+        requestAnimationFrame(animateUniverse);
+    }
+    
+    animateUniverse();
+});
+</script>
+{{ end }}

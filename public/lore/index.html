@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lores | MyuKyu</title>
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    
+        <link rel="stylesheet" href="/css/theme-detective.css">
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        #void-curtain {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #08080b;
+            z-index: 9999999; pointer-events: none;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        body.is-transitioning #void-curtain { transform: translateY(0); }
+        body.is-loading #void-curtain { transform: translateY(0); transition: none; }
+        body.is-loaded #void-curtain { transform: translateY(-100%); }
+    </style>
+</head>
+
+<body class="section-lore is-loading">
+    
+    <div id="void-curtain"></div>
+
+    
+    <nav class="global-nav">
+        <a href="/" class="brand">MyuKyu</a>
+        <div class="links">
+            <a href="/projects/">Projects</a>
+            <a href="/music/">Music</a>
+            <a href="/lore/">Lore</a>
+            <a href="/visuals/">Visuals</a>
+            <a href="/chat/">Chat</a>
+        </div>
+    </nav>
+    
+
+    <main>
+        
+<div class="board-viewport" id="viewport">
+    <div class="infinite-canvas" id="canvas">
+        
+        <svg id="red-strings"></svg>
+
+        
+        <a href="http://localhost:1313/lore/rest-worlds-theory/" class="evidence-node style-note" id="node-0">
+            
+            
+            <div class="evidence-title">Rest Worlds Theory</div>
+            <div class="evidence-excerpt"></div>
+            
+        </a>
+        
+        <a href="http://localhost:1313/lore/clowny-entity/" class="evidence-node style-doc" id="node-1">
+            
+            <div class="classified-stamp">RESTRICTED</div>
+            <div class="evidence-title">Clowny Entity</div>
+            <div class="evidence-excerpt"></div>
+            
+        </a>
+        
+        <a href="http://localhost:1313/lore/doc-commander-logs/" class="evidence-node style-photo" id="node-2">
+            
+            
+            <div class="evidence-title">Doc Commander Logs</div>
+            <div class="evidence-excerpt"></div>
+            
+        </a>
+        
+        <a href="http://localhost:1313/lore/myukyu-os-origins/" class="evidence-node style-note" id="node-3">
+            
+            
+            <div class="evidence-title">Myukyu Os Origins</div>
+            <div class="evidence-excerpt"></div>
+            
+        </a>
+        
+        <a href="http://localhost:1313/lore/project-noty-incident/" class="evidence-node style-doc" id="node-4">
+            
+            <div class="classified-stamp">RESTRICTED</div>
+            <div class="evidence-title">Project Noty Incident</div>
+            <div class="evidence-excerpt"></div>
+            
+        </a>
+        
+
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const viewport = document.getElementById('viewport');
+    const canvas = document.getElementById('canvas');
+    const nodes = Array.from(document.querySelectorAll('.evidence-node'));
+    const svg = document.getElementById('red-strings');
+
+    
+    let isDragging = false;
+    let startX, startY, currentX = 0, currentY = 0;
+
+    viewport.addEventListener('mousedown', (e) => {
+        
+        if (e.target.closest('.evidence-node')) return; 
+        
+        isDragging = true;
+        startX = e.clientX - currentX;
+        startY = e.clientY - currentY;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX - startX;
+        currentY = e.clientY - startY;
+        canvas.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    });
+
+    document.addEventListener('mouseup', () => isDragging = false);
+
+    
+    
+    const canvasWidth = window.innerWidth * 3;
+    const canvasHeight = window.innerHeight * 3;
+    const safeMargin = 400; 
+
+    const nodePositions = [];
+
+    nodes.forEach((node, i) => {
+        
+        const x = safeMargin + Math.random() * (canvasWidth - safeMargin * 2);
+        const y = safeMargin + Math.random() * (canvasHeight - safeMargin * 2);
+        
+        const rotation = (Math.random() * 30) - 15;
+
+        node.style.left = `${x}px`;
+        node.style.top = `${y}px`;
+        node.style.transform = `rotate(${rotation}deg)`;
+
+        
+        nodePositions.push({ 
+            x: x + (node.offsetWidth / 2), 
+            y: y + (node.offsetHeight / 2) 
+        });
+    });
+
+    
+    if (nodePositions.length > 1) {
+        let linesHTML = "";
+        
+        for (let i = 0; i < nodePositions.length - 1; i++) {
+            linesHTML += `<line class="string-line" x1="${nodePositions[i].x}" y1="${nodePositions[i].y}" x2="${nodePositions[i+1].x}" y2="${nodePositions[i+1].y}" />`;
+        }
+        
+        const randA = Math.floor(Math.random() * nodePositions.length);
+        const randB = Math.floor(Math.random() * nodePositions.length);
+        linesHTML += `<line class="string-line" x1="${nodePositions[randA].x}" y1="${nodePositions[randA].y}" x2="${nodePositions[randB].x}" y2="${nodePositions[randB].y}" />`;
+        
+        svg.innerHTML = linesHTML;
+    }
+});
+</script>
+
+    </main>
+
+    <script src="/js/main.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove('is-loading');
+                document.body.classList.add('is-loaded');
+            });
+        });
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('is-transitioning');
+                document.body.classList.add('is-loaded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('/') && !href.startsWith('#') && link.target !== '_blank') {
+                e.preventDefault(); 
+                
+                document.body.classList.remove('is-loaded');
+                document.body.classList.add('is-transitioning');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600); 
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visuals on My New Hugo Project</title>
+    <link>http://localhost:1313/visuals/</link>
+    <description>Recent content in Visuals on My New Hugo Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Mar 2026 15:56:54 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/visuals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Krita Doodle</title>
+      <link>http://localhost:1313/visuals/krita-doodle/</link>
+      <pubDate>Tue, 03 Mar 2026 15:56:54 +0700</pubDate>
+      <guid>http://localhost:1313/visuals/krita-doodle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Color Palette Test</title>
+      <link>http://localhost:1313/visuals/color-palette-test/</link>
+      <pubDate>Tue, 03 Mar 2026 15:56:53 +0700</pubDate>
+      <guid>http://localhost:1313/visuals/color-palette-test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Concept Art 1</title>
+      <link>http://localhost:1313/visuals/concept-art-1/</link>
+      <pubDate>Tue, 03 Mar 2026 15:56:53 +0700</pubDate>
+      <guid>http://localhost:1313/visuals/concept-art-1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Myukyu Os Mockup</title>
+      <link>http://localhost:1313/visuals/myukyu-os-mockup/</link>
+      <pubDate>Tue, 03 Mar 2026 15:56:53 +0700</pubDate>
+      <guid>http://localhost:1313/visuals/myukyu-os-mockup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Study Anatomy</title>
+      <link>http://localhost:1313/visuals/study-anatomy/</link>
+      <pubDate>Tue, 03 Mar 2026 15:56:53 +0700</pubDate>
+      <guid>http://localhost:1313/visuals/study-anatomy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>39 - A3 Vertical Study</title>
+      <link>http://localhost:1313/visuals/painting-03/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/visuals/painting-03/</guid>
+      <description>&lt;p&gt;Eksperimen pertama menggunakan Krita untuk menangkap emosi &lt;em&gt;hopelessness&lt;/em&gt;. Fokus pada pencahayaan &lt;em&gt;chiaroscuro&lt;/em&gt; dan tekstur kuas minyak.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Higanbana - A3 Vertical Study</title>
+      <link>http://localhost:1313/visuals/painting-02/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/visuals/painting-02/</guid>
+      <description>&lt;p&gt;Eksperimen pertama menggunakan Krita untuk menangkap emosi &lt;em&gt;hopelessness&lt;/em&gt;. Fokus pada pencahayaan &lt;em&gt;chiaroscuro&lt;/em&gt; dan tekstur kuas minyak.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Silent Choir - A3 Vertical Study</title>
+      <link>http://localhost:1313/visuals/painting-01/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/visuals/painting-01/</guid>
+      <description>&lt;p&gt;Eksperimen pertama menggunakan Krita untuk menangkap emosi &lt;em&gt;hopelessness&lt;/em&gt;. Fokus pada pencahayaan &lt;em&gt;chiaroscuro&lt;/em&gt; dan tekstur kuas minyak.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

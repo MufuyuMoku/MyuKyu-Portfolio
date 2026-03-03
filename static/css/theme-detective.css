@@ -1,0 +1,101 @@
+/* THEME KHUSUS LORE: The Clinical Archive (Light Theme) */
+body.section-lore {
+    background-color: #f8f9fa; /* Abu-abu putih medis yang sangat terang dan steril */
+    color: #1a1a1a; /* Teks warna tinta gelap */
+    overflow: hidden; 
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    /* Pola milimeter blok (Graph paper) untuk kesan analitis/investigasi */
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size: 25px 25px;
+}
+
+/* Jendela pandang kamera */
+.board-viewport {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    cursor: grab;
+}
+.board-viewport:active { cursor: grabbing; }
+
+/* Kanvas raksasa */
+.infinite-canvas {
+    position: absolute;
+    width: 300vw; 
+    height: 300vh;
+    top: -100vh; 
+    left: -100vw;
+    transform-origin: center;
+}
+
+/* Jaring Benang Merah (Sekarang jauh lebih mencolok di latar putih) */
+#red-strings {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; 
+    z-index: 1;
+}
+.string-line {
+    stroke: #e63946; /* Merah Crimson terang */
+    stroke-width: 2.5px;
+    opacity: 0.85;
+}
+
+/* --- TIPE BUKTI (EVIDENCE NODES) --- */
+.evidence-node {
+    position: absolute;
+    z-index: 5;
+    text-decoration: none;
+    color: #111;
+    padding: 1.5rem;
+    /* Bayangan lebih lembut untuk tema terang */
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, z-index 0.2s, box-shadow 0.2s ease;
+    user-select: none;
+    max-width: 250px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.evidence-node:hover {
+    transform: scale(1.05) rotate(0deg) !important; 
+    z-index: 20;
+    box-shadow: 8px 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Gaya 1: Sticky Note */
+.style-note {
+    background-color: #fef08a; /* Kuning pastel */
+    border-radius: 2px 15px 2px 2px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    border-left: 4px solid #eab308;
+}
+
+/* Gaya 2: Classified Doc */
+.style-doc {
+    background-color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 15px solid #d1d5db; /* Klip dokumen warna silver/abu-abu */
+    color: #222;
+}
+
+/* Gaya 3: Polaroid Photo */
+.style-photo {
+    background-color: #ffffff;
+    padding: 10px 10px 40px 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.evidence-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.3; }
+.evidence-excerpt { font-size: 0.85rem; opacity: 0.7; line-height: 1.5; }
+.classified-stamp {
+    color: #e63946; font-family: 'JetBrains Mono', monospace; font-weight: bold;
+    font-size: 0.75rem; border: 1.5px solid #e63946; padding: 2px 5px;
+    display: inline-block; margin-bottom: 10px; transform: rotate(-5deg);
+}

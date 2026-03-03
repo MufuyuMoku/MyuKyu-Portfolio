@@ -1,0 +1,58 @@
+{{ define "main" }}
+<style>
+    /* Sinkronisasi dengan latar belakang grid terang dari list.html */
+    body.section-lore { 
+        background-color: #f8f9fa; 
+        background-image: linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+        background-size: 25px 25px;
+        overflow: auto; 
+        padding: 4rem 2rem; 
+    }
+    
+    /* Desain Map Intelijen (Kertas Putih Bersih) */
+    .lore-document {
+        max-width: 750px; margin: 0 auto;
+        background-color: #ffffff; color: #1a1a1a;
+        padding: 4rem 5rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        border: 1px solid #e5e7eb;
+        font-family: 'Playfair Display', serif;
+        position: relative;
+    }
+    
+    .lore-document::before {
+        content: 'CONFIDENTIAL // MYUKYU ARCHIVES';
+        position: absolute; top: 1.5rem; left: 5rem;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+        color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 4px;
+    }
+
+    .btn-return {
+        display: block; width: max-content; margin: 0 auto 2rem auto;
+        color: #e63946; text-decoration: none; font-family: 'JetBrains Mono', monospace;
+        font-weight: bold; border: 1px solid #e63946; padding: 8px 16px; transition: all 0.2s;
+        background: #ffffff;
+    }
+    .btn-return:hover { background-color: #e63946; color: #ffffff; }
+
+    .doc-title { font-size: 3rem; margin: 2rem 0 1rem 0; font-weight: 900; letter-spacing: -1px; }
+    .doc-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; margin-bottom: 3rem; }
+    
+    .markdown-content p { line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem; }
+    
+    /* Sensor hitam (Redacted) yang tebal di atas kertas putih */
+    .markdown-content strong { background-color: #1a1a1a; color: #1a1a1a; padding: 0 4px; transition: color 0.3s; }
+    .markdown-content strong:hover { color: #f8f9fa; } 
+</style>
+
+<a href="/lore/" class="btn-return">✖ CLOSE DOSSIER</a>
+
+<div class="lore-document">
+    <h1 class="doc-title">{{ .Title }}</h1>
+    <div class="doc-meta">ENTRY LOG: {{ .Date.Format "2006.01.02" }} // STATUS: DECRYPTED</div>
+    
+    <div class="markdown-content">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musics | MyuKyu</title>
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    
+        <link rel="stylesheet" href="/css/theme-polaris.css">
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        #void-curtain {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #08080b;
+            z-index: 9999999; pointer-events: none;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        body.is-transitioning #void-curtain { transform: translateY(0); }
+        body.is-loading #void-curtain { transform: translateY(0); transition: none; }
+        body.is-loaded #void-curtain { transform: translateY(-100%); }
+    </style>
+</head>
+
+<body class="section-music is-loading">
+    
+    <div id="void-curtain"></div>
+
+    
+    <nav class="global-nav">
+        <a href="/" class="brand">MyuKyu</a>
+        <div class="links">
+            <a href="/projects/">Projects</a>
+            <a href="/music/">Music</a>
+            <a href="/lore/">Lore</a>
+            <a href="/visuals/">Visuals</a>
+            <a href="/chat/">Chat</a>
+        </div>
+    </nav>
+    
+
+    <main>
+        
+<div class="hyperspace-nav">
+    <button class="warp-btn" id="btn-prev-system">◄ Warp</button>
+    <span id="current-system-name">SCANNING...</span>
+    <button class="warp-btn" id="btn-next-system">Warp ►</button>
+</div>
+
+<div id="galaxy-container">
+    
+    
+    
+    <div class="system-group active" data-system-name="Rest:[Worlds]">
+        
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+
+        <div class="center-core">
+            <h2>Soundscape</h2>
+            <p>Rest:[Worlds]</p>
+        </div>
+
+        
+            
+                
+                
+                <a href="http://localhost:1313/music/neon-genesis-teto/" class="planet-node" data-id="neon-genesis" title="Neon Genesis (feat. Kasane Teto)">
+                    <div class="star-core"></div>
+                    <span class="star-title">Neon Genesis (feat. Kasane Teto)</span>
+                </a>
+
+                
+                    
+                
+                    
+                
+                    
+                
+                
+            
+        
+            
+        
+            
+                
+                
+                <a href="http://localhost:1313/music/rest-worlds-overture/" class="planet-node" data-id="rw-overture" title="Rest:[Worlds] - Overture">
+                    <div class="star-core"></div>
+                    <span class="star-title">Rest:[Worlds] - Overture</span>
+                </a>
+
+                
+                    
+                
+                    
+                        <a href="http://localhost:1313/music/rest-worlds-overture-inst/" class="moon-node" data-parent="rw-overture" title="Overture (Instrumental Mix)">
+                            <div class="moon-core"></div>
+                            <span class="moon-title">Overture (Instrumental Mix)</span>
+                        </a>
+                    
+                
+                    
+                
+                
+            
+        
+    </div>
+    
+    <div class="system-group hyperspace-out" data-system-name="Synth Experiments">
+        
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+
+        <div class="center-core">
+            <h2>Soundscape</h2>
+            <p>Synth Experiments</p>
+        </div>
+
+        
+            
+        
+            
+                
+                
+                <a href="http://localhost:1313/music/eleanor-forte-test/" class="planet-node" data-id="eleanor-gravity" title="Eleanor Forte - Gravity">
+                    <div class="star-core"></div>
+                    <span class="star-title">Eleanor Forte - Gravity</span>
+                </a>
+
+                
+                    
+                        <a href="http://localhost:1313/music/eleanor-gravity-acapella/" class="moon-node" data-parent="eleanor-gravity" title="Gravity (Raw Acapella)">
+                            <div class="moon-core"></div>
+                            <span class="moon-title">Gravity (Raw Acapella)</span>
+                        </a>
+                    
+                
+                    
+                
+                
+            
+        
+    </div>
+    
+    <div class="system-group hyperspace-out" data-system-name="Vocaloid Covers">
+        
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+
+        <div class="center-core">
+            <h2>Soundscape</h2>
+            <p>Vocaloid Covers</p>
+        </div>
+
+        
+            
+        
+            
+                
+                
+                <a href="http://localhost:1313/music/track-01/" class="planet-node" data-id="kimi-no-yozora" title="Kimi no Yozora">
+                    <div class="star-core"></div>
+                    <span class="star-title">Kimi no Yozora</span>
+                </a>
+
+                
+                    
+                        <a href="http://localhost:1313/music/track-01-inst/" class="moon-node" data-parent="kimi-no-yozora" title="Instrumental (Off-Vocal)">
+                            <div class="moon-core"></div>
+                            <span class="moon-title">Instrumental (Off-Vocal)</span>
+                        </a>
+                    
+                
+                    
+                
+                
+            
+        
+    </div>
+    
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const systems = Array.from(document.querySelectorAll('.system-group'));
+    if (systems.length === 0) return;
+
+    
+    let activeIndex = 0;
+    const sysNameDisplay = document.getElementById('current-system-name');
+
+    function updateSystemDisplay() {
+        sysNameDisplay.textContent = systems[activeIndex].getAttribute('data-system-name');
+        systems.forEach((sys, i) => {
+            sys.classList.remove('active', 'hyperspace-in', 'hyperspace-out');
+            if (i === activeIndex) sys.classList.add('active');
+            else if (i > activeIndex) sys.classList.add('hyperspace-out'); 
+            else sys.classList.add('hyperspace-in');  
+        });
+    }
+    
+    document.getElementById('btn-prev-system').addEventListener('click', () => {
+        activeIndex = (activeIndex - 1 + systems.length) % systems.length; updateSystemDisplay();
+    });
+    document.getElementById('btn-next-system').addEventListener('click', () => {
+        activeIndex = (activeIndex + 1) % systems.length; updateSystemDisplay();
+    });
+    updateSystemDisplay();
+
+    
+    const rings = [
+        { r: "15vw", s: 0.15 },   
+        { r: "25vw", s: -0.08 },  
+        { r: "37.5vw", s: 0.05 }  
+    ];
+
+    const universeData = [];
+
+    systems.forEach(sys => {
+        const planets = Array.from(sys.querySelectorAll('.planet-node'));
+        const moons = Array.from(sys.querySelectorAll('.moon-node'));
+        const sysData = { planets: [], moons: [] };
+
+        planets.forEach((p, i) => {
+            const ringInfo = rings[i % 3];
+            const startAngle = (i / planets.length) * 360;
+            
+            p.style.setProperty('--radius', ringInfo.r);
+            
+            const pData = { el: p, id: p.getAttribute('data-id'), angle: startAngle, speed: ringInfo.s, isHovered: false };
+            sysData.planets.push(pData);
+
+            
+            p.addEventListener('mouseenter', () => pData.isHovered = true);
+            p.addEventListener('mouseleave', () => pData.isHovered = false);
+        });
+
+        moons.forEach((m) => {
+            const moonRadius = (40 + Math.random() * 20) + "px";
+            m.style.setProperty('--moon-radius', moonRadius);
+            
+            const mData = { el: m, parent_id: m.getAttribute('data-parent'), angle: Math.random() * 360, speed: 0.5 + Math.random() * 1.5, isHovered: false };
+            sysData.moons.push(mData);
+
+            
+            m.addEventListener('mouseenter', () => mData.isHovered = true);
+            m.addEventListener('mouseleave', () => mData.isHovered = false);
+        });
+
+        universeData.push(sysData);
+    });
+
+    
+    function animateUniverse() {
+        const activeSysData = universeData[activeIndex];
+
+        if (activeSysData) {
+            
+            activeSysData.planets.forEach(p => {
+                if (!p.isHovered) {
+                    p.angle = (p.angle + p.speed) % 360;
+                }
+                p.el.style.setProperty('--angle', `${p.angle}deg`);
+            });
+
+            
+            activeSysData.moons.forEach(m => {
+                const parent = activeSysData.planets.find(p => p.id === m.parent_id);
+                if (parent) {
+                    
+                    m.el.style.setProperty('--angle', `${parent.angle}deg`);
+                    m.el.style.setProperty('--radius', parent.el.style.getPropertyValue('--radius'));
+                }
+
+                if (!m.isHovered) {
+                    m.angle = (m.angle + m.speed) % 360;
+                }
+                m.el.style.setProperty('--moon-angle', `${m.angle}deg`);
+            });
+        }
+        requestAnimationFrame(animateUniverse);
+    }
+    
+    animateUniverse();
+});
+</script>
+
+    </main>
+
+    <script src="/js/main.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove('is-loading');
+                document.body.classList.add('is-loaded');
+            });
+        });
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('is-transitioning');
+                document.body.classList.add('is-loaded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('/') && !href.startsWith('#') && link.target !== '_blank') {
+                e.preventDefault(); 
+                
+                document.body.classList.remove('is-loaded');
+                document.body.classList.add('is-transitioning');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600); 
+            }
+        });
+    </script>
+</body>
+</html>

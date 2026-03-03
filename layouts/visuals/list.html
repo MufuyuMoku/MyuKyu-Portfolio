@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="marquee-wrapper">
+    
+    <div class="track-container">
+        <div class="rope-line"></div>
+        <div class="marquee-track track-1" data-speed="1.2">
+            <div class="marquee-content">
+                {{ range .Pages }}
+                {{ $imageUrl := .Params.image | default (printf "https://picsum.photos/seed/%s/800/1200" .File.TranslationBaseName) }}
+                <a href="{{ .Permalink }}" class="visual-node">
+                    <img src="{{ $imageUrl }}" class="visual-image" alt="{{ .Title }}">
+                    <div class="visual-title">{{ .Title }}</div>
+                </a>
+                {{ end }}
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                {{ range .Pages }}
+                {{ $imageUrl := .Params.image | default (printf "https://picsum.photos/seed/%s/800/1200" .File.TranslationBaseName) }}
+                <a href="{{ .Permalink }}" class="visual-node">
+                    <img src="{{ $imageUrl }}" class="visual-image" alt="{{ .Title }}">
+                    <div class="visual-title">{{ .Title }}</div>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="track-container">
+        <div class="rope-line"></div>
+        <div class="marquee-track track-2" data-speed="-1">
+            <div class="marquee-content">
+                {{ range seq (len .Pages) -1 1 }}
+                    {{ $page := index $.Pages (sub . 1) }}
+                    {{ $imageUrl := $page.Params.image | default (printf "https://picsum.photos/seed/%s/800/1200" $page.File.TranslationBaseName) }}
+                    <a href="{{ $page.Permalink }}" class="visual-node">
+                        <img src="{{ $imageUrl }}" class="visual-image" alt="{{ $page.Title }}">
+                        <div class="visual-title">{{ $page.Title }}</div>
+                    </a>
+                {{ end }}
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                {{ range seq (len .Pages) -1 1 }}
+                    {{ $page := index $.Pages (sub . 1) }}
+                    {{ $imageUrl := $page.Params.image | default (printf "https://picsum.photos/seed/%s/800/1200" $page.File.TranslationBaseName) }}
+                    <a href="{{ $page.Permalink }}" class="visual-node">
+                        <img src="{{ $imageUrl }}" class="visual-image" alt="{{ $page.Title }}">
+                        <div class="visual-title">{{ $page.Title }}</div>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/visuals-engine.js"></script>
+{{ end }}

@@ -1,0 +1,173 @@
+:root {
+    --bg-terminal: #fff5f8;
+    --text-terminal: #5a4b6c;
+    --accent-mint: #a8e6cf;
+    --accent-blue: #dcedc1;
+    --accent-pink: #ffaaa5;
+    --border-color: #d8c3d6;
+    --prompt-user: #ff8b94;
+    --prompt-dir: #88d8b0;
+}
+
+body.section-projects {
+    background-color: #f0eaf4; 
+    color: var(--text-terminal);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+}
+
+body.section-projects main {
+    display: block; 
+    position: relative;
+    min-height: 100vh;
+    padding-top: 6rem;
+    overflow: hidden; 
+}
+
+.terminal-window {
+    position: absolute;
+    background-color: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    width: 600px;
+    min-height: 350px;
+    box-shadow: 15px 15px 0px rgba(216, 195, 214, 0.4);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.terminal-header {
+    cursor: grab;
+}
+
+@media (max-width: 900px) {
+    body.section-projects main { display: flex; flex-direction: column; gap: 2rem; padding: 6rem 1rem; overflow: auto; }
+    .terminal-window { position: relative; width: 100%; top: auto !important; left: auto !important; }
+}
+
+#typed-text {
+    color: var(--text-terminal);
+    font-weight: bold;
+}
+
+.terminal-header {
+    background-color: var(--border-color);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.term-btn { width: 14px; height: 14px; border-radius: 50%; }
+.btn-close { background-color: var(--accent-pink); }
+.btn-min { background-color: var(--accent-mint); }
+.btn-max { background-color: var(--accent-blue); }
+
+.term-title { margin-left: auto; margin-right: auto; color: #fff; letter-spacing: 1px; }
+
+.terminal-body {
+    padding: 2.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.prompt-line { margin-bottom: 1.5rem; }
+.prompt-user { color: var(--prompt-user); font-weight: bold; }
+.prompt-dir { color: var(--prompt-dir); font-weight: bold; }
+.prompt-symbol { margin-right: 0.5rem; color: var(--text-terminal); }
+
+.project-list { list-style: none; padding: 0; margin: 1rem 0 3rem 0; }
+.project-list li { display: flex; gap: 2rem; margin-bottom: 0.8rem; }
+.file-perm { color: #a497b5; }
+.file-date { color: var(--prompt-dir); }
+.project-link {
+    color: var(--text-terminal);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed var(--border-color);
+    transition: all 0.2s ease;
+}
+.project-link:hover { background-color: var(--accent-pink); color: #fff; }
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--prompt-user);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+    color: var(--prompt-user);
+    margin-top: 2.5rem;
+    border-bottom: 2px dashed var(--border-color);
+    padding-bottom: 0.5rem;
+}
+.markdown-content p { margin-bottom: 1.2rem; }
+.markdown-content code {
+    background-color: var(--border-color);
+    color: #fff;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+#os-context-menu {
+    display: none; 
+    position: absolute; 
+    background: var(--bg-terminal); 
+    border: 2px solid var(--border-color); 
+    box-shadow: 5px 5px 0px rgba(216, 195, 214, 0.5); 
+    z-index: 99999; 
+    padding: 0.5rem 0; 
+    border-radius: 6px;
+    width: 200px;
+}
+.os-menu-item { 
+    padding: 0.8rem 1.2rem; 
+    cursor: pointer; 
+    color: var(--text-terminal); 
+    font-size: 0.95rem; 
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+}
+.os-menu-item:hover { 
+    background: var(--accent-pink); 
+    color: #fff; 
+}
+
+.terminal-window {
+    transition: box-shadow 0.2s ease, opacity 0.2s ease, width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+}
+
+.terminal-window.is-dragging {
+    transition: none !important; 
+}
+
+.terminal-window.minimized {
+    min-height: 0 !important;
+    height: auto !important;
+    width: 350px !important; 
+}
+.terminal-window.minimized .terminal-body {
+    display: none; 
+}
+
+
+.terminal-window.maximized {
+    top: 80px !important; 
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 80px) !important;
+    border-radius: 0;
+}

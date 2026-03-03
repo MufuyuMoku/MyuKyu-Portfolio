@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myukyu Os | MyuKyu</title>
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    
+        <link rel="stylesheet" href="/css/theme-terminal-pastel.css">
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        #void-curtain {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #08080b;
+            z-index: 9999999; pointer-events: none;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        body.is-transitioning #void-curtain { transform: translateY(0); }
+        body.is-loading #void-curtain { transform: translateY(0); transition: none; }
+        body.is-loaded #void-curtain { transform: translateY(-100%); }
+    </style>
+</head>
+
+<body class="section-projects is-loading">
+    
+    <div id="void-curtain"></div>
+
+    
+    <nav class="global-nav">
+        <a href="/" class="brand">MyuKyu</a>
+        <div class="links">
+            <a href="/projects/">Projects</a>
+            <a href="/music/">Music</a>
+            <a href="/lore/">Lore</a>
+            <a href="/visuals/">Visuals</a>
+            <a href="/chat/">Chat</a>
+        </div>
+    </nav>
+    
+
+    <main>
+        
+<div class="terminal-window" style="top: 80px; left: 15vw; width: 70vw; min-height: 75vh; z-index: 10;">
+    <div class="terminal-header">
+        <a href="/projects/" class="term-btn btn-close" style="display:inline-block;" title="Close (cd ..)"></a>
+        <span class="term-btn btn-min"></span>
+        <span class="term-btn btn-max"></span>
+        <span class="term-title">nvim myukyu-os.md</span>
+    </div>
+    
+    <div class="terminal-body" style="overflow-y: auto;">
+        <div class="prompt-line">
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> cat myukyu-os.md
+        </div>
+        
+        <div class="markdown-content">
+            <h1>Myukyu Os</h1>
+            
+        </div>
+
+        <div class="prompt-line" style="margin-top: 3rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+            <p style="color: #a497b5; font-size: 0.8rem; margin-bottom: 1rem;">// Ketik 'cd ..' pada keyboardmu dan tekan Enter untuk kembali.</p>
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> 
+            <span id="typed-text"></span><span class="cursor"></span>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <script src="/js/main.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove('is-loading');
+                document.body.classList.add('is-loaded');
+            });
+        });
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('is-transitioning');
+                document.body.classList.add('is-loaded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('/') && !href.startsWith('#') && link.target !== '_blank') {
+                e.preventDefault(); 
+                
+                document.body.classList.remove('is-loaded');
+                document.body.classList.add('is-transitioning');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600); 
+            }
+        });
+    </script>
+</body>
+</html>

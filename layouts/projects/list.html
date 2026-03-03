@@ -1,0 +1,95 @@
+{{ define "main" }}
+
+<div id="os-context-menu">
+    <div class="os-menu-item" id="menu-open-win">Open in New Terminal</div>
+    <div class="os-menu-item" id="menu-cancel">Cancel</div>
+</div>
+
+<div class="terminal-window window-sysinfo" id="win-sysinfo" style="top: 80px; left: 5vw; z-index: 1;">
+    <div class="terminal-header">
+        <span class="term-btn btn-close"></span>
+        <span class="term-btn btn-min"></span>
+        <span class="term-btn btn-max"></span>
+        <span class="term-title">sysinfo</span>
+    </div>
+    <div class="terminal-body" style="font-size: 0.9rem;">
+        <div class="prompt-line">
+            <span class="prompt-user">myukyu@archlinux</span><span class="prompt-symbol">$</span> neofetch
+        </div>
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+            <pre style="color: var(--accent-pink); font-weight: bold; line-height: 1.2;">
+   /\\__//\\
+  / o o  \\
+ (   "    )
+  \\~(*)~/
+            </pre>
+            <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                <li><span style="color: var(--prompt-user); font-weight: bold;">OS:</span> MyuKyu OS (Arch-based)</li>
+                <li><span style="color: var(--prompt-user); font-weight: bold;">Kernel:</span> Hugo v{{ hugo.Version }}</li>
+                <li><span style="color: var(--prompt-user); font-weight: bold;">WM:</span> i3-Pastel</li>
+                <li><span style="color: var(--prompt-user); font-weight: bold;">Total Projects:</span> {{ len .Pages }} deployed</li>
+                <li><span style="color: var(--prompt-user); font-weight: bold;">Latest Build:</span> {{ now.Format "02 Jan 2006" }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="terminal-window window-dir" id="win-dir" style="top: 130px; left: 35vw; z-index: 2;">
+    <div class="terminal-header">
+        <span class="term-btn btn-close"></span>
+        <span class="term-btn btn-min"></span>
+        <span class="term-btn btn-max"></span>
+        <span class="term-title">~/projects</span>
+    </div>
+    <div class="terminal-body">
+        <div class="prompt-line">
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> ls -la
+        </div>
+        
+        <ul class="project-list">
+            {{ range .Pages }}
+            <li>
+                <span class="file-perm">-rw-r--r--</span>
+                <span class="file-date">{{ .Date.Format "Jan 02 15:04" }}</span>
+                <a href="{{ .Permalink }}" class="project-link" data-target="proj-{{ .File.TranslationBaseName }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+
+        <div class="prompt-line" style="margin-top: 2rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+            <p style="color: #a497b5; font-size: 0.8rem; margin-bottom: 1rem;">// Type to grep/search projects. Press Enter to clear.</p>
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span>
+            <span class="search-text" style="color: var(--text-terminal); font-weight: bold;"></span><span class="cursor"></span>
+        </div>
+    </div>
+</div>
+
+{{ range .Pages }}
+<div class="terminal-window window-content" id="proj-{{ .File.TranslationBaseName }}" style="display: none; top: 180px; left: 20vw; width: 60vw; min-height: 60vh; z-index: 3;">
+    <div class="terminal-header">
+        <span class="term-btn btn-close btn-close-win" title="Close (cd ..)"></span>
+        <span class="term-btn btn-min"></span>
+        <span class="term-btn btn-max"></span>
+        <span class="term-title">nvim {{ .File.LogicalName }}</span>
+    </div>
+    
+    <div class="terminal-body" style="overflow-y: auto;">
+        <div class="prompt-line">
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> cat {{ .File.LogicalName }}
+        </div>
+        
+        <div class="markdown-content">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+        </div>
+
+        <div class="prompt-line" style="margin-top: 3rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+            <p style="color: #a497b5; font-size: 0.8rem; margin-bottom: 1rem;">// Ketik 'cd ..' untuk keluar, atau ketik kata lain untuk fungsi Highlight/Grep.</p>
+            <span class="prompt-user">myukyu@archlinux</span>:<span class="prompt-dir">~/projects</span><span class="prompt-symbol">$</span> 
+            <span class="typed-text" style="color: var(--text-terminal); font-weight: bold;"></span><span class="cursor"></span>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+{{ end }}

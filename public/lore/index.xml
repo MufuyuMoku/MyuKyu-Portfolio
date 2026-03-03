@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lores on My New Hugo Project</title>
+    <link>http://localhost:1313/lore/</link>
+    <description>Recent content in Lores on My New Hugo Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Mar 2026 15:48:08 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/lore/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rest Worlds Theory</title>
+      <link>http://localhost:1313/lore/rest-worlds-theory/</link>
+      <pubDate>Tue, 03 Mar 2026 15:48:08 +0700</pubDate>
+      <guid>http://localhost:1313/lore/rest-worlds-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Clowny Entity</title>
+      <link>http://localhost:1313/lore/clowny-entity/</link>
+      <pubDate>Tue, 03 Mar 2026 15:48:07 +0700</pubDate>
+      <guid>http://localhost:1313/lore/clowny-entity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Doc Commander Logs</title>
+      <link>http://localhost:1313/lore/doc-commander-logs/</link>
+      <pubDate>Tue, 03 Mar 2026 15:48:07 +0700</pubDate>
+      <guid>http://localhost:1313/lore/doc-commander-logs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Myukyu Os Origins</title>
+      <link>http://localhost:1313/lore/myukyu-os-origins/</link>
+      <pubDate>Tue, 03 Mar 2026 15:48:07 +0700</pubDate>
+      <guid>http://localhost:1313/lore/myukyu-os-origins/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project Noty Incident</title>
+      <link>http://localhost:1313/lore/project-noty-incident/</link>
+      <pubDate>Tue, 03 Mar 2026 15:48:07 +0700</pubDate>
+      <guid>http://localhost:1313/lore/project-noty-incident/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

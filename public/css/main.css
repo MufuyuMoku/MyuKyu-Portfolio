@@ -1,0 +1,38 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+}
+
+.global-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.global-nav a:hover { opacity: 1; }
+
+.brand {
+    font-size: 1.2rem !important;
+    text-transform: uppercase;
+    letter-spacing: 3px !important;
+}
+
+.links {
+    display: flex;
+    gap: 2rem;
+}

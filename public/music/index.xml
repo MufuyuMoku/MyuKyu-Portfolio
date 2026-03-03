@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Musics on My New Hugo Project</title>
+    <link>http://localhost:1313/music/</link>
+    <description>Recent content in Musics on My New Hugo Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/music/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gravity (Raw Acapella)</title>
+      <link>http://localhost:1313/music/eleanor-gravity-acapella/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/eleanor-gravity-acapella/</guid>
+      <description>&lt;p&gt;Data mentah. Hanya berisi &lt;em&gt;render&lt;/em&gt; vokal Eleanor Forte tanpa efek &lt;em&gt;reverb&lt;/em&gt; atau &lt;em&gt;delay&lt;/em&gt;, berguna untuk membedah bagaimana parameternya diatur di dalam &lt;em&gt;software&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Eleanor Forte - Gravity</title>
+      <link>http://localhost:1313/music/eleanor-forte-test/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/eleanor-forte-test/</guid>
+      <description>&lt;p&gt;Eksperimen pertama menggunakan &lt;em&gt;voicebank&lt;/em&gt; Eleanor Forte. Fokus utamanya adalah pada artikulasi lirik bahasa Inggris dan &lt;em&gt;tuning&lt;/em&gt; vokal agar terdengar lebih bernapas dan natural di atas instrumen J-Pop.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Neon Genesis (feat. Kasane Teto)</title>
+      <link>http://localhost:1313/music/neon-genesis-teto/</link>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/neon-genesis-teto/</guid>
+      <description>&lt;p&gt;Track dengan tempo yang sedikit lebih cepat. Karakter vokal Kasane Teto yang unik dilebur dengan elemen elektronik yang berdegup, menciptakan &lt;em&gt;gap&lt;/em&gt; antara emosi organik dan mesin.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Instrumental (Off-Vocal)</title>
+      <link>http://localhost:1313/music/track-01-inst/</link>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/track-01-inst/</guid>
+      <description>&lt;p&gt;(Isi konten di sini)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Overture (Instrumental Mix)</title>
+      <link>http://localhost:1313/music/rest-worlds-overture-inst/</link>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/rest-worlds-overture-inst/</guid>
+      <description>&lt;p&gt;Versi murni tanpa vokal dari Overture. Memfokuskan telinga pendengar sepenuhnya pada struktur &lt;em&gt;chord&lt;/em&gt; dan &lt;em&gt;sound design&lt;/em&gt; dari layer synth yang digunakan.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rest Worlds Concept</title>
+      <link>http://localhost:1313/music/rest-worlds-concept/</link>
+      <pubDate>Tue, 03 Mar 2026 15:04:34 +0700</pubDate>
+      <guid>http://localhost:1313/music/rest-worlds-concept/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Synth v Eleanor</title>
+      <link>http://localhost:1313/music/synth-v-eleanor/</link>
+      <pubDate>Tue, 03 Mar 2026 15:04:34 +0700</pubDate>
+      <guid>http://localhost:1313/music/synth-v-eleanor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vocaloid Test 1</title>
+      <link>http://localhost:1313/music/vocaloid-test-1/</link>
+      <pubDate>Tue, 03 Mar 2026 15:04:34 +0700</pubDate>
+      <guid>http://localhost:1313/music/vocaloid-test-1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kimi no Yozora</title>
+      <link>http://localhost:1313/music/track-01/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/track-01/</guid>
+      <description>&lt;p&gt;(Isi konten di sini)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rest:[Worlds] - Overture</title>
+      <link>http://localhost:1313/music/rest-worlds-overture/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/music/rest-worlds-overture/</guid>
+      <description>&lt;p&gt;Ini adalah track pembuka. Sebuah pengantar menuju lanskap elektronik yang mengawang-awang dan luas.&#xA;Penggunaan synthesizer di awal track ini difokuskan untuk membangun atmosfer yang &lt;em&gt;ethereal&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

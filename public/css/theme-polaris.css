@@ -1,0 +1,113 @@
+/* THEME KHUSUS MUSIC: The Ethereal Observatory */
+body.section-music {
+    background-color: #07060f; /* Deepest Violet-Black, sangat kontras dengan beranda */
+    color: #e2e8f0;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.astrolabe-wrapper {
+    position: relative;
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* --- THE SYSTEM & HYPERSPACE JUMP ANIMATION --- */
+.system-group {
+    position: absolute;
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.system-group.hyperspace-out { opacity: 0; transform: scale(3) translateZ(0); pointer-events: none; }
+.system-group.hyperspace-in { opacity: 0; transform: scale(0.2) translateZ(0); pointer-events: none; }
+.system-group.active { opacity: 1; transform: scale(1) translateZ(0); pointer-events: auto; }
+
+/* Cincin Orbit (Kini menempel absolut di tengah layar) */
+.ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.ring-1 { width: 30vw; height: 30vw; border: 1px dashed rgba(250, 204, 21, 0.3); animation: spinRing 90s linear infinite; } /* Emas */
+.ring-2 { width: 50vw; height: 50vw; border: 1px solid rgba(192, 132, 252, 0.25); animation: spinRing 140s linear infinite reverse; } /* Ungu Nebula */
+.ring-3 { width: 75vw; height: 75vw; border: 1px dashed rgba(57, 197, 187, 0.15); animation: spinRing 200s linear infinite; } /* Cyan MyuKyu */
+
+@keyframes spinRing { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Inti Tata Surya (Warna Emas & Ungu) */
+.center-core {
+    position: absolute; text-align: center; z-index: 5;
+    animation: pulse 4s ease-in-out infinite; pointer-events: none;
+}
+.center-core h2 {
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem;
+    color: #facc15; text-shadow: 0 0 20px rgba(250, 204, 21, 0.6); margin: 0;
+}
+.center-core p {
+    font-size: 0.9rem; letter-spacing: 8px; color: #c084fc; text-transform: uppercase; margin-top: 0.5rem;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.03); } }
+
+/* --- MESIN ORBIT ABSOLUT --- */
+/* Planet akan ditarik langsung dari tengah layar tanpa butuh wrapper group */
+.planet-node {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform-origin: 0 0; /* Mengunci titik poros tepat di tengah layar */
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-decoration: none; color: rgba(255, 255, 255, 0.6); transition: color 0.3s ease, z-index 0.3s;
+    z-index: 10;
+    
+    /* Rantai Transformasi Matematika:
+       1. Putar ke arah orbit (var--angle)
+       2. Maju sejauh jari-jari (var--radius)
+       3. Putar balik agar posisi berdiri tegak (calc -1 * angle)
+       4. Geser -50% agar gambar tepat berada di garis (translate)
+    */
+    transform: rotate(var(--angle, 0deg)) translateX(var(--radius, 15vw)) rotate(calc(-1 * var(--angle, 0deg))) translate(-50%, -50%);
+}
+
+.star-core {
+    width: 14px; height: 14px; border-radius: 50%; margin-bottom: 12px; transition: all 0.3s ease;
+    background-color: #facc15; box-shadow: 0 0 15px #facc15, 0 0 30px #facc15;
+}
+.planet-node:hover .star-core { background-color: #c084fc; box-shadow: 0 0 20px #c084fc, 0 0 50px #c084fc; transform: scale(1.8); }
+.planet-node:hover { color: #fff; z-index: 30; }
+.star-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 4px #000; }
+
+.moon-node {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform-origin: 0 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-decoration: none; color: rgba(255, 255, 255, 0.4); transition: color 0.3s ease;
+    z-index: 5;
+    
+    /* Rantai Transformasi Bulan (Planet -> Bulan -> Berdiri Tegak): */
+    transform: 
+        rotate(var(--angle, 0deg)) translateX(var(--radius, 15vw)) 
+        rotate(var(--moon-angle, 0deg)) translateX(var(--moon-radius, 50px)) 
+        rotate(calc(-1 * var(--moon-angle, 0deg))) rotate(calc(-1 * var(--angle, 0deg))) 
+        translate(-50%, -50%);
+}
+.moon-core {
+    width: 6px; height: 6px; border-radius: 50%; margin-bottom: 6px; transition: all 0.3s ease;
+    background-color: #6ee7b7; box-shadow: 0 0 8px #6ee7b7;
+}
+.moon-node:hover .moon-core { background-color: #fff; transform: scale(2); }
+.moon-title { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; text-shadow: 0 2px 4px #000; }
+.moon-node:hover .moon-title { opacity: 1; color: #fff; z-index: 30; }
+/* --- HYPERSPACE NAVIGATION --- */
+.hyperspace-nav {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 2rem; z-index: 100; font-family: 'JetBrains Mono', monospace;
+    background: rgba(10, 5, 20, 0.7); backdrop-filter: blur(8px); padding: 0.8rem 2rem; border-radius: 50px;
+    border: 1px solid rgba(192, 132, 252, 0.4); box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+}
+.warp-btn { background: transparent; border: none; color: #c084fc; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; transition: all 0.2s ease; }
+.warp-btn:hover { color: #facc15; text-shadow: 0 0 10px #facc15; transform: scale(1.1); }
+#current-system-name { color: #e2e8f0; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; }
